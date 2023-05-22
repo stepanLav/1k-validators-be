@@ -54,5 +54,53 @@ spec:
                     "wss://kusama.public.curie.radiumblock.xyz/ws",
                   ],
                 },
-
+                "constraints": {
+                  "skipConnectionTime": false,
+                  "skipIdentity": false,
+                  "skipStakedDestination": true,
+                  "skipClientUpgrade": false,
+                  "forceClientVersion": "v0.9.39",
+                  "skipUnclaimed": true,
+                  "minSelfStake": 10000000000000,
+                  "commission": 150000000,
+                  "unclaimedEraThreshold": 4,
+                },
+                "cron": {
+                  "monitor": "0 */15 * * * *"
+                },
+                "db": {
+                  "mongo": {
+                    "uri": "mongodb://b:b@kusama-mongodb-headless.kusama.svc.cluster.local/otv?tls=false&replicaSet=rs0",
+                  },
+                },
+                "matrix": {
+                  "enabled": true,
+                  "baseUrl": "https://matrix.org",
+                  "room": "b",
+                  "userId": "@1kv-stats:matrix.org",
+                },
+                "proxy": {
+                  "timeDelayBlocks": "10850",
+                  "blacklistedAnnouncements": []
+                },
+                "server": {
+                  "port": 3300,
+                  "enable": true
+                },
+                "telemetry": {
+                  "enable": true,
+                  "chains": [
+                    "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe"
+                  ],
+                  "blacklistedProviders": [
+                    "Hetzner Online GmbH",
+                    "Contabo Inc.",
+                    "Contabo GmbH"
+                  ],
+                  "host": "wss://telemetry-backend.w3f.community/feed",
+                },
+                "subscan": {
+                  "baseV1Url": "https://kusama.api.subscan.io/api/scan",
+                  "baseV2Url": "https://kusama.api.subscan.io/api/v2/scan",
+                },
               }
