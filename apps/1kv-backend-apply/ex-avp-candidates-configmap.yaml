@@ -6,6 +6,7 @@ data:
   score.json: | 
     [
       {
+        "test": "<path:vaults/k8s-community-secrets/items/test#test>"
         "name": "Blockshard",
         "stash": "Cp4U5UYg2FaVUpyEtQgfBm9aqge6EEPkJxEFVZFYy7L1AZF",
         "riotHandle": "@marc1104:matrix.org",
