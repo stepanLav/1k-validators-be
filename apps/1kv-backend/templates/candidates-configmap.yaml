@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: score
+data:
+  score.json: | {{ range .Files.Lines "config/kusama/candidates.json" }}
+    {{ . }}{{ end }}
