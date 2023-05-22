@@ -85,6 +85,12 @@ spec:
                 },
                 "score": {{ range .Files.Lines "config/kusama/score.json" }}
                     {{ . }}{{ end }},
+                "scorekeeper": {
+                  "candidates": {{ range .Files.Lines "config/kusama/candidates.json" }}
+                    {{ . }}{{ end }},
+                  "forceRound": false,
+                  "nominating": true
+                },
                 "server": {
                   "port": 3300,
                   "enable": true
