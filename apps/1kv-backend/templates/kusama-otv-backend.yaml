@@ -83,6 +83,8 @@ spec:
                   "timeDelayBlocks": "10850",
                   "blacklistedAnnouncements": []
                 },
+                "score": {{ range .Files.Lines "config/kusama/score.json" }}
+                    {{ . }}{{ end }},
                 "server": {
                   "port": 3300,
                   "enable": true
