@@ -48,7 +48,12 @@ spec:
                   "test": false,
                   "retroactive": false,
                   "historicalNominations": false,
-                  "apiEndpoints":  {{ .Values.kusama.be.apiEndpoints | toJson  }}
+                  "apiEndpoints": [
+                    "wss://kusama-rpc.polkadot.io",
+                    "wss://kusama.api.onfinality.io/public-ws",
+                    "wss://kusama-rpc.dwellir.com",
+                    "wss://kusama.public.curie.radiumblock.xyz/ws",
+                  ],
                 },
                 "constraints": {
                   "skipConnectionTime": false,
@@ -59,31 +64,31 @@ spec:
                   "skipUnclaimed": true,
                   "minSelfStake": 10000000000000,
                   "commission": 150000000,
-                  "unclaimedEraThreshold": 4
+                  "unclaimedEraThreshold": 4,
                 },
                 "cron": {
                   "monitor": "0 */15 * * * *"
                 },
                 "db": {
                   "mongo": {
-                      "uri": {{ .Values.kusama.db.uri | quote}}
-                  }
+                    "uri": "mongodb://<path:vaults/k8s-community-secrets/items/otv-kusama#mongo-username>:<path:vaults/k8s-community-secrets/items/otv-kusama#mongo-password>@kusama-mongodb-headless.kusama.svc.cluster.local/otv?tls=false&replicaSet=rs0",
+                  },
                 },
                 "matrix": {
                   "enabled": true,
                   "baseUrl": "https://matrix.org",
-                  "room": {{ .Values.kusama.be.matrix.room | quote}},
-                  "userId": {{ .Values.kusama.be.matrix.userId | quote}}
+                  "room": "!mdugGIKqSTweIOpTlA:web3.foundation",
+                  "userId": "@1kv-stats:matrix.org",
                 },
                 "proxy": {
-                    "timeDelayBlocks": "10850",
-                    "blacklistedAnnouncements": []
+                  "timeDelayBlocks": "10850",
+                  "blacklistedAnnouncements": []
                 },
-                {{- $v := $.Files.Get "scores.yaml" | fromYaml }}
-                "score": {{ $v.kusama | toJson }},                
+                "score": {{ range .Files.Lines "config/kusama/score.json" }}
+                    {{ . }}{{ end }},
                 "scorekeeper": {
-                  {{- $v := $.Files.Get "candidatesKusama.yaml" | fromYaml }}
-                  "candidates": {{ $v.candidates | toJson }},
+                  "candidates": {{ range .Files.Lines "config/kusama/candidates.json" }}
+                    {{ . }}{{ end }},
                   "forceRound": false,
                   "nominating": true
                 },
@@ -94,17 +99,17 @@ spec:
                 "telemetry": {
                   "enable": true,
                   "chains": [
-                      "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe"
+                    "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe"
                   ],
                   "blacklistedProviders": [
                     "Hetzner Online GmbH",
                     "Contabo Inc.",
                     "Contabo GmbH"
                   ],
-                  "host": "wss://telemetry-backend.w3f.community/feed"
+                  "host": "wss://telemetry-backend.w3f.community/feed",
                 },
                 "subscan": {
-                    "baseV1Url": "https://kusama.api.subscan.io/api/scan",
-                    "baseV2Url": "https://kusama.api.subscan.io/api/v2/scan"
-                }
+                  "baseV1Url": "https://kusama.api.subscan.io/api/scan",
+                  "baseV2Url": "https://kusama.api.subscan.io/api/v2/scan",
+                },
               }
