@@ -71,13 +71,13 @@ spec:
                 },
                 "db": {
                   "mongo": {
-                    "uri": "mongodb://<path:vaults/k8s-community-secrets/items/otv-kusama#mongo-username>:<path:vaults/k8s-community-secrets/items/otv-kusama#mongo-password>@kusama-mongodb-headless.kusama.svc.cluster.local/otv?tls=false&replicaSet=rs0",
+                    "uri": "mongodb://b:b@kusama-mongodb-headless.kusama.svc.cluster.local/otv?tls=false&replicaSet=rs0",
                   },
                 },
                 "matrix": {
                   "enabled": true,
                   "baseUrl": "https://matrix.org",
-                  "room": "!mdugGIKqSTweIOpTlA:web3.foundation",
+                  "room": "b",
                   "userId": "@1kv-stats:matrix.org",
                 },
                 "proxy": {
