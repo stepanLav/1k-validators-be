@@ -4,5 +4,20 @@ metadata:
   name: candidates
 data:
   score.json: | 
-    {{ range .Files.Lines "config/kusama/candidates.json" }}
-    {{ . }}{{ end }}
+    [
+      {
+        "name": "Blockshard",
+        "stash": "Cp4U5UYg2FaVUpyEtQgfBm9aqge6EEPkJxEFVZFYy7L1AZF",
+        "riotHandle": "@marc1104:matrix.org",
+      },
+      {
+        "name": "Forbole GP01",
+        "stash": "D9rwRxuG8xm8TZf5tgkbPxhhTJK5frCJU9wvp59VRjcMkUf",
+        "riotHandle": "@kwunyeung:matrix.org",
+      },
+      {
+        "name": "🎠 Forbole GP01",
+        "stash": "D9rwRxuG8xm8TZf5tgkbPxhhTJK5frCJU9wvp59VRjcMkUf",
+        "riotHandle": "@kwunyeung:matrix.org",
+      },  
+    ]
