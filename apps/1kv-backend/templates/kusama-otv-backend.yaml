@@ -83,7 +83,8 @@ spec:
                   "timeDelayBlocks": "10850",
                   "blacklistedAnnouncements": []
                 },
-                "score": {{ range .Files.Lines "config/kusama/score.json" }}{{ . }}{{ end }}
+                "score": {{ range .Files.Lines "config/kusama/score.json" }}
+                    {{ . }}{{ end }},
                 "scorekeeper": {
                   "candidates": {{ range .Files.Lines "config/kusama/candidates.json" }}
                     {{ . }}{{ end }},
