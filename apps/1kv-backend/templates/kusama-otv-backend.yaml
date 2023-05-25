@@ -37,7 +37,7 @@ spec:
                 cpu: 700m
                 memory: 3Gi
 
-            secret: <path:vaults/k8s-community-secrets/items/otv-kusama#backend-secret>
+            secret: <path:vaults/local/items/test-note#test-item>
 
             config: |
               {
